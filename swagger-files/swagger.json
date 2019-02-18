@@ -1,0 +1,87 @@
+{
+	"swagger": "2.0",
+	"info" : {
+		"version" : "1.0.0",
+		"title" : "Title of the app",
+		"description" : "Description of the current application"
+	},
+	"schemes" : [
+		"https"
+	],
+	"host" : "application.api",
+	"basePath" : "authentication",
+	"paths" : { 
+		"/users" : { 
+			"post" : {
+				"tags" : [
+					"users" 
+				],
+				"summary" : "Insert a new user", 
+				"description" : "Description of the new insert user",
+				"consumes" : [ 
+					"application/json"
+				],
+				"produces" : [ 
+					"application/json"
+				],
+				"parameters" : [
+					{
+						"name" : "username",
+						"in" : "users",
+						"type" : "string",
+						"description" : "The username of the user",
+						"required" : "true"
+					},
+					{
+						"name" : "password",
+						"in" : "users",
+						"type" : "string",
+						"description" : "The password of the user",
+						"required" : "true"
+					},
+					{
+						"name" : "firstname",
+						"in" : "users",
+						"type" : "string",
+						"description" : "The firstname of the user",
+						"required" : "true"
+					},
+					{
+						"name" : "lastname",
+						"in" : "users",
+						"type" : "string",
+						"description" : "The lastname of the user",
+						"required" : "true"
+					}
+				],
+				"responses" : {
+					"200" : {
+						"description" : "Successfully registered",
+						"schema" : {
+							"type" : "object",
+							"properties" : {
+								"username" : {
+									"type" : "string"
+								},
+								"firstname" : {
+									"type" : "string"
+								},
+								"lastname" : {
+									"type" : "string"
+								}
+							}
+						},
+						"headers" : {
+							"x-auth" : {
+								"schema" : {
+									"type" : "string"
+								},
+								"description" : "The return token for authentication"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
